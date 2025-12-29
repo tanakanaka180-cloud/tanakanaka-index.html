@@ -435,11 +435,11 @@ const initialCasts = [
 
 // レアキャスト（画像は差し替え前提）
 const RARE = {
-  "カレン": {id:"rare_karen", name:"カレン", img:"img/karen.jpg", aisou:90, kaiwa:75, attentiveness:80, fati:0, fatiMax:120, stress:0, stressMax:120, lv:5, exp:0, salary:18000, isInitial:false,joinWeek: GameState.week},
-  "ユズ":   {id:"rare_yuzu",  name:"ユズ",   img:"img/yuzu.jpg",  aisou:80, kaiwa:90, attentiveness:75, fati:0, fatiMax:120, stress:0, stressMax:120, lv:5, exp:0, salary:18000, isInitial:false,joinWeek: GameState.week},
-  "レイナ": {id:"rare_reina", name:"レイナ", img:"img/reina.jpg", aisou:85, kaiwa:80, attentiveness:90, fati:0, fatiMax:120, stress:0, stressMax:120, lv:5, exp:0, salary:18000, isInitial:false,joinWeek: GameState.week},
-  "ミナ":   {id:"rare_mina",  name:"ミナ",   img:"img/mina.jpg",  aisou:75, kaiwa:85, attentiveness:80, fati:0, fatiMax:120, stress:0, stressMax:120, lv:5, exp:0, salary:18000, isInitial:false,joinWeek: GameState.week},
-  "アオイ": {id:"rare_aoi",   name:"アオイ", img:"img/aoi.jpg",   aisou:80, kaiwa:80, attentiveness:85, fati:0, fatiMax:120, stress:0, stressMax:120, lv:5, exp:0, salary:18000, isInitial:false,joinWeek: GameState.week}
+  "カレン": {id:"rare_karen", name:"カレン", img:"images/karen.jpg", aisou:90, kaiwa:75, attentiveness:80, fati:0, fatiMax:120, stress:0, stressMax:120, lv:5, exp:0, salary:18000, isInitial:false,joinWeek: GameState.week},
+  "ユズ":   {id:"rare_yuzu",  name:"ユズ",   img:"images/yuzu.jpg",  aisou:80, kaiwa:90, attentiveness:75, fati:0, fatiMax:120, stress:0, stressMax:120, lv:5, exp:0, salary:18000, isInitial:false,joinWeek: GameState.week},
+  "レイナ": {id:"rare_reina", name:"レイナ", img:"images/reina.jpg", aisou:85, kaiwa:80, attentiveness:90, fati:0, fatiMax:120, stress:0, stressMax:120, lv:5, exp:0, salary:18000, isInitial:false,joinWeek: GameState.week},
+  "ミナ":   {id:"rare_mina",  name:"ミナ",   img:"images/mina.jpg",  aisou:75, kaiwa:85, attentiveness:80, fati:0, fatiMax:120, stress:0, stressMax:120, lv:5, exp:0, salary:18000, isInitial:false,joinWeek: GameState.week},
+  "アオイ": {id:"rare_aoi",   name:"アオイ", img:"images/aoi.jpg",   aisou:80, kaiwa:80, attentiveness:85, fati:0, fatiMax:120, stress:0, stressMax:120, lv:5, exp:0, salary:18000, isInitial:false,joinWeek: GameState.week}
 };
 
 // ランク段階
@@ -748,11 +748,11 @@ function randomGenjiName(){
 
 
 const lookImgMap = {
-  "キュート": Array.from({ length: 30 }, (_, i) => `images/character/キュート/cute (${i + 1}).jpg`),
-  "クール": Array.from({ length: 30 }, (_, i) => `images/character/クール/cool (${i + 1}).jpg`),
-  "ビューティー": Array.from({ length: 30 }, (_, i) => `images/character/ビューティー/beauty (${i + 1}).jpg`),
-  "セクシー": Array.from({ length: 30 }, (_, i) => `images/character/セクシー/sexy (${i + 1}).jpg`),
-  "カジュアル": Array.from({ length: 30 }, (_, i) => `images/character/カジュアル/casual (${i + 1}).jpg`)
+  "cute": Array.from({ length: 30 }, (_, i) => `images/character/cute/cute (${i + 1}).jpg`),
+  "cool": Array.from({ length: 30 }, (_, i) => `images/character/cool/cool (${i + 1}).jpg`),
+  "beauty": Array.from({ length: 30 }, (_, i) => `images/character/beauty/beauty (${i + 1}).jpg`),
+  "sexy": Array.from({ length: 30 }, (_, i) => `images/character/sexy/sexy (${i + 1}).jpg`),
+  "casual": Array.from({ length: 30 }, (_, i) => `images/character/casual/casual (${i + 1}).jpg`)
 };
 
   let html = ""; // これがないと html += でエラーになります
@@ -1504,3 +1504,4 @@ document.getElementById("btnReset2").onclick = ()=>{ initGame(); document.getEle
 </script>
 </body>
 </html>
+
