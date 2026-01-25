@@ -670,24 +670,51 @@ document.getElementById("adSelect").addEventListener("change", e=>{
 /* ===========
    教育
    =========== */
-document.getElementById("btnTrain").addEventListener("click", ()=>{
+document.getElementById("btnTrain").addEventListener("click", () => {
   const id = document.getElementById("trainTarget").value;
   const stat = document.getElementById("trainStat").value;
-  const budget = parseInt(document.getElementById("trainBudget").value||"0",10);
-  const c = GameState.casts.find(x=>x.id===id);
-  if(!c) return;
-  if(GameState.funds < budget){ alert("資金不足です"); return; }
+  const budgetInput = document.getElementById("trainBudget").value;
+  const budget = parseInt(budgetInput || "0", 10);
 
-  // 教育効果：予算に応じて 1〜(budget/2000+2) ランダム上昇
-  const inc = randInt(1, Math.max(2, Math.floor(budget/2000)+2));
-  c[stat] = c[stat] + inc;
-  c.fati = clamp(c.fati + 10, 0, c.fatiMax);
+  // 全メンバーの中から、プルダウンで選ばれたIDのキャラを探す
+  const c = GameState.casts.find(x => x.id === id);
+
+  if (!c) {
+    alert("対象のキャストが見つかりません");
+    return;
+  }
+  
+  if (budget <= 0) {
+    alert("予算を入力してください");
+    return;
+  }
+
+  if (GameState.funds < budget) {
+    alert("資金不足です");
+    return;
+  }
+
+  // 教育効果の計算
+  const inc = Math.floor(Math.random() * (budget / 2000 + 2)) + 1;
+  
+  // ステータス加算（数値であることを確認）
+  if (typeof c[stat] === 'number') {
+    c[stat] += inc;
+  }
+  
+  // 疲労度アップ
+  c.fati = Math.min(c.fati + 10, c.fatiMax);
+  
+  // 資金を減らす
   GameState.funds -= budget;
 
-  renderHeader();
-  renderCastList();
-  alert(`${c.name}の${stat}が+${inc}されました（費用:${yen(budget)}／疲労+10）`);
+  // 画面の更新
+  renderHeader();     // お金や週数の表示更新
+  renderCastList();   // キャスト一覧（ステータス）の表示更新
+  
+  alert(`${c.name}の${stat}が +${inc} されました！\n（費用: ${budget}円 / 疲労 +10）`);
 });
+
 
 /* ===========
    採用
@@ -1504,6 +1531,7 @@ document.getElementById("btnReset2").onclick = ()=>{ initGame(); document.getEle
 </script>
 </body>
 </html>
+
 
 
 
