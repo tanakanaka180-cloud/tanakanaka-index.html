@@ -835,11 +835,29 @@ function hire(cand){
   renderShiftList();
   renderCastList();
   rollShiftRandom();
+updateTrainDropdown(); // ★ここで呼び出す！
 
   // 候補リストからこの人だけ削除
   const area = document.getElementById("hireCandidates");
   const candEl = area.querySelector(`[data-id="${cand.id}"]`);
   if(candEl) candEl.remove();
+}
+
+// 教育対象のプルダウンを最新の状態にする関数
+function updateTrainDropdown() {
+  const select = document.getElementById("trainTarget");
+  if (!select) return;
+
+  // 一旦、中身を空っぽにする
+  select.innerHTML = "";
+
+  // 今雇っているメンバー全員分、選択肢を追加する
+  GameState.casts.forEach(cast => {
+    const opt = document.createElement("option");
+    opt.value = cast.id; // プログラムが識別するためのID
+    opt.textContent = `${cast.name} (Lv.${cast.lv})`; // 画面に表示される名前
+    select.appendChild(opt);
+  });
 }
 
 /* ===========
@@ -1531,6 +1549,7 @@ document.getElementById("btnReset2").onclick = ()=>{ initGame(); document.getEle
 </script>
 </body>
 </html>
+
 
 
 
